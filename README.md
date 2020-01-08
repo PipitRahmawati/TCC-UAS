@@ -44,15 +44,17 @@ Contoh ini terdiri dari komponen-komponen berikut :
 	![08](gambar/slave1.PNG)
 •	Query daftar layanan untuk memverifikasi bahwa layanan Redis Slave sedang berjalan
 	Ketikan peritah berikut : kubectl get services
-	![09](gambar/Slave.PNG)
+	![09](gambar/slaves.PNG)
 
 ### Atur dan Paparkan Fronted Buku Tamu
-Aplikasi buku tamu memiliki antarmuka web yang melayani permintaan HTTP yang ditulis dalam PHP. Dikonfigurasi untuk terhubung ke internet redis-master layanan untuk permintaan tulis dan layanan redis-slave untuk permintaan baca. 
+	Aplikasi buku tamu memiliki antarmuka web yang melayani permintaan HTTP yang ditulis dalam PHP. Dikonfigurasi untuk terhubung ke internet redis-master layanan untuk permintaan tulis dan layanan redis-slave untuk permintaan baca. 
 1.	Membuat Buku Tamu Frontend Deployment
 •	Terapkan penepatan frontend dari frontend-deployment.yaml file :
+
 	![10](gambar/frontenddeployment.PNG)
 •	Query daftar pods untuk memverifikasi bahwa tiga replica frontend sedang berjalan
 	Ketikan perintah : kubectl get pods -l app=guestbook -l tier=frontend
+	
 	![11](gambar/frontenddeployment2.PNG)
 
 2.	Membuat Frontend Service
@@ -76,8 +78,8 @@ Aplikasi buku tamu memiliki antarmuka web yang melayani permintaan HTTP yang dit
 	![14](gambar/LoadBalancer.PNG)
 •	Salin alamat IP eksternal , dan muat pada halaman browser untuk melihat buku tamu
 
-Skala Frontend Web
-Menaikkan atau menurunkan mudah karena server didefinisikan sebagai layanan yang menggunakan deployment controller.
+### Skala Frontend Web
+	Menaikkan atau menurunkan mudah karena server didefinisikan sebagai layanan yang menggunakan deployment controller.
 •	Jalankan perintah berikut untuk meningkatkan jumlah frontend pods
 	![15](gambar/replicas.PNG)
 •	Query daftar pods untuk memverifikasi jumlah frontend pods yang sedang berjalan
@@ -90,6 +92,12 @@ Menaikkan atau menurunkan mudah karena server didefinisikan sebagai layanan yang
 	Ketikan perintah : kubectl get pods
 	![18](gambar/replicas222.PNG)
 
+### Cleaning Up
+	Menghapus penyebaran dan layanan, juga meghapus pod yang berjalan gunakan label untuk menghapus banyak sumber daya dengan satu perintah.
+•	Jalankan perintah berikut untuk menghapus semua pods, penyebaraan dan layanan
+	![19](gambar/Cleaningup.PNG)
+•	Query daftar pods untuk memverifikasi bahwa tidak ada pods yang berjalan :
+	![19](gambar/Cleaningup2.PNG)
 
 
 
